@@ -13,12 +13,25 @@ setTimeout(function () {
   let userArray = [];
   if (userNumbers.includes(" "))
     userArray = userNumbers.split(" ")
-  else
+  else if (userNumbers.includes(","))
     userArray = userNumbers.split(",")
+  else {
+    alert("Utilizza spazi o virgole per separare i numeri")
+    return 0;
+  }
+
+  if (userArray.length != 5) {
+    alert("Devi inserire 5 numeri")
+    return 0;
+  }
 
   //Converte le stringhe nell'array in numeri
   for (let i = 0; i < 5; i++) {
     userArray[i] = parseInt(userArray[i])
+    if (isNaN(userArray[i])) {
+      alert("Inserisci dei numeri validi")
+      return 0;
+    }
   }
 
   //Controllare quanti e quali numeri sono stati individuati
@@ -30,9 +43,13 @@ setTimeout(function () {
       resultArray.push(currentNumber)
       counter++;
     }
-  }
 
-  alert(`Hai indovinato ${counter} numeri. I numeri indovinati sono: ${resultArray}`)
+  }
+  if (counter === 1)
+    alert(`Hai indovinato ${counter} numero. Il numero indovinato è: ${resultArray}`)
+  else
+    alert(`Hai indovinato ${counter} numeri. I numeri indovinati sono: ${resultArray}`)
+
 }, 30000)
 
 
