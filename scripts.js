@@ -64,7 +64,12 @@ function generateRandomArray() {
 
   for (let i = 0; i < 5; i++) {
     const num = Math.floor(Math.random() * 50 + 1);
-    arr.push(num);
+    if (arr.includes(num)) {
+      i--
+    }
+    else {
+      arr.push(num);
+    }
   }
 
   return arr;
