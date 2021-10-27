@@ -1,23 +1,38 @@
 //Salvo l'array casuale in una variabile globale per poterlo confrontare con l'input dell'utente
 const randomArray = generateRandomArray();
-let numbers;
 //Faccio vedere i numeri all'utente tramite un alert
 alert(randomArray);
 
 //Avvia un timer di trenta secondi
 //Allo scadere del tempo chiedere all'utente di inserire dei numeri con un prompt()
+let userNumbers;
 setTimeout(function () {
-  numbers = prompt("Inserisci cinque numeri separati da spazi o virgole")
+  userNumbers = prompt("Inserisci cinque numeri separati da spazi o virgole");
 
-  //Converte i numeri in un array
+  //Converte le stringhe in un array
   let userArray = [];
-  if (numbers.includes(" "))
-    userArray = numbers.split(" ")
+  if (userNumbers.includes(" "))
+    userArray = userNumbers.split(" ")
   else
-    userArray = numbers.split(",")
-  console.log(userArray);
+    userArray = userNumbers.split(",")
 
-  //Controllare quali e quanti numeri sono stati individuati
+  //Converte le stringhe nell'array in numeri
+  for (let i = 0; i < 5; i++) {
+    userArray[i] = parseInt(userArray[i])
+  }
+
+  //Controllare quanti e quali numeri sono stati individuati
+  let resultArray = [];
+  let counter = 0;
+  for (let i = 0; i < 5; i++) {
+    const currentNumber = userArray[i]
+    if (randomArray.includes(currentNumber)) {
+      resultArray.push(currentNumber)
+      counter++;
+    }
+  }
+
+  alert(`Hai indovinato ${counter} numeri. I numeri indovinati sono: ${resultArray}`)
 }, 0)
 
 
