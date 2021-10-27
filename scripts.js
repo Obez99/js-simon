@@ -33,7 +33,7 @@ setTimeout(function () {
   }
 
   alert(`Hai indovinato ${counter} numeri. I numeri indovinati sono: ${resultArray}`)
-}, 0)
+}, 30000)
 
 
 
